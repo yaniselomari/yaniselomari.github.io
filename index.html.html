@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yanis El Omari</title>
+  <meta name="description" content="Academic website of Yanis El Omari, PhD Candidate in Finance at KU Leuven." />
+  <style>
+    :root {
+      --bg: #fcfcfb;
+      --paper: #ffffff;
+      --ink: #1d2433;
+      --muted: #5f6b7a;
+      --line: #d9dee6;
+      --accent: #0f4c81;
+      --accent-soft: #eaf2f8;
+      --max: 980px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(252,252,251,0.96);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(8px);
+      z-index: 20;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+    }
+
+    .menu {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.97rem;
+    }
+
+    .hero {
+      padding: 4.5rem 0 2.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 0.9fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      margin: 0 0 0.6rem;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero p {
+      margin: 0 0 1rem;
+      max-width: 62ch;
+    }
+
+    .quick-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.3rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.72rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 0.95rem;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.25rem;
+      box-shadow: 0 8px 24px rgba(17, 24, 39, 0.05);
+    }
+
+    .profile-box {
+      position: sticky;
+      top: 5.8rem;
+    }
+
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #e8edf4, #d9e7f3);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--line);
+    }
+
+    main section {
+      padding: 1.2rem 0 0.8rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      margin: 0 0 0.9rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .research-fields {
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+      margin-top: 0.7rem;
+    }
+
+    .pill {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 0.38rem 0.72rem;
+      font-size: 0.9rem;
+    }
+
+    .cv-list, .paper-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.75rem;
+      align-items: start;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid #eef1f4;
+    }
+
+    .entry:last-child { border-bottom: 0; }
+
+    .entry-title {
+      font-weight: 700;
+      margin-bottom: 0.18rem;
+    }
+
+    .entry-sub {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .entry-date {
+      color: var(--muted);
+      white-space: nowrap;
+      font-size: 0.95rem;
+    }
+
+    .paper-title {
+      font-style: italic;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .section-note {
+      color: var(--muted);
+      margin-top: -0.2rem;
+      margin-bottom: 1rem;
+      font-size: 0.96rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: 2rem;
+      padding: 1.5rem 0 2.5rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .two-col,
+      .entry {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-box {
+        position: static;
+      }
+
+      .entry-date {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">Yanis El Omari</div>
+      <nav class="menu" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#cv">CV</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section class="hero" id="about">
+      <div class="hero-grid">
+        <div>
+          <h1>Yanis El Omari</h1>
+          <div class="subtitle">PhD Candidate in Finance, KU Leuven</div>
+          <p>
+            I am a fourth-year PhD candidate in Finance at KU Leuven. My research lies in banking and financial intermediation, with a focus on systemic risk, financial market regulation, and financial stability.
+          </p>
+          <p>
+            My work combines finance, regulation, and computational methods to study how financial market structures and institutions shape stability and risk transmission. I also have longstanding policy experience through my work at the European Securities and Markets Authority.
+          </p>
+          <div class="research-fields">
+            <span class="pill">Banking</span>
+            <span class="pill">Financial Intermediation</span>
+            <span class="pill">Systemic Risk</span>
+            <span class="pill">Financial Regulation</span>
+            <span class="pill">Financial Stability</span>
+          </div>
+          <div class="quick-links">
+            <a class="btn primary" href="#research">View Research</a>
+            <a class="btn" href="#cv">Academic CV</a>
+            <a class="btn" href="mailto:yaniselomari@hotmail.fr">Email</a>
+          </div>
+        </div>
+
+        <aside class="profile-box card">
+          <div class="profile-photo">Add your photo here</div>
+          <div><strong>Current affiliation</strong><br />KU Leuven, Faculty of Economics and Business</div>
+          <div style="margin-top: 0.85rem;"><strong>Visiting position</strong><br />Stanford University, Department of Economics<br />Host: Matthew O. Jackson</div>
+          <div style="margin-top: 0.85rem;"><strong>Email</strong><br /><a href="mailto:yaniselomari@hotmail.fr">yaniselomari@hotmail.fr</a></div>
+          <div style="margin-top: 0.85rem;"><strong>Links</strong><br />
+            <a href="#">CV PDF</a><br />
+            <a href="#">Google Scholar</a><br />
+            <a href="#">SSRN</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <main>
+      <section id="research">
+        <h2>Research</h2>
+        <div class="section-note">Selected working papers and research in progress.</div>
+
+        <div class="paper-list card">
+          <div>
+            <div class="paper-title">A Century of Inflation Narratives</div>
+            <div class="entry-sub">with Heddaya, Zeng, Thau, Tan, Voigt, and Zentefis</div>
+          </div>
+          <div>
+            <div class="paper-title">Work in progress title</div>
+            <div class="entry-sub">Add coauthors if applicable</div>
+          </div>
+          <div>
+            <div class="paper-title">Work in progress title</div>
+            <div class="entry-sub">Add short description or coauthors if desired</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cv">
+        <h2>Curriculum Vitae</h2>
+        <div class="two-col">
+          <div class="card">
+            <div class="entry">
+              <div>
+                <div class="entry-title">KU Leuven, PhD in Finance</div>
+                <div class="entry-sub">Expected completion: 2027</div>
+              </div>
+              <div class="entry-date">2021–present</div>
+            </div>
+            <div class="entry">
+              <div>
+                <div class="entry-title">Stanford University, Department of Economics</div>
+                <div class="entry-sub">Visiting Researcher, host: Matthew O. Jackson</div>
+              </div>
+              <div class="entry-date">2026–present</div>
+            </div>
+            <div class="entry">
+              <div>
+                <div class="entry-title">Toulouse School of Economics</div>
+                <div class="entry-sub">MSc in Financial Markets and Intermediaries</div>
+              </div>
+              <div class="entry-date">2012</div>
+            </div>
+            <div class="entry">
+              <div>
+                <div class="entry-title">Université Bordeaux IV</div>
+                <div class="entry-sub">Magistère in International Economics and Finance</div>
+              </div>
+              <div class="entry-date">2011</div>
+            </div>
+            <div class="entry">
+              <div>
+                <div class="entry-title">University of Oklahoma</div>
+                <div class="entry-sub">Exchange Program</div>
+              </div>
+              <div class="entry-date">2010–2011</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="entry">
+              <div>
+                <div class="entry-title">European Securities and Markets Authority (ESMA)</div>
+                <div class="entry-sub">Economist / Risk Analyst. Post-trading, market microstructure, derivative markets, econometrics, network analysis, NLP.</div>
+              </div>
+              <div class="entry-date">2012–present</div>
+            </div>
+            <div class="entry">
+              <div>
+                <div class="entry-title">Université Toulouse 1 Capitole</div>
+                <div class="entry-sub">Teaching Assistant in applied econometrics and macroeconomics.</div>
+              </div>
+              <div class="entry-date">2012</div>
+            </div>
+            <div class="entry">
+              <div>
+                <div class="entry-title">Languages</div>
+                <div class="entry-sub">French (native), English (C2), Spanish (B2)</div>
+              </div>
+              <div class="entry-date"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="teaching">
+        <h2>Publications and Policy Work</h2>
+        <div class="card cv-list">
+          <div class="entry">
+            <div>
+              <div class="entry-title">Assessing contagion risks from the CDS market</div>
+              <div class="entry-sub">Brunnermeier et al., ESRB Occasional Paper No. 4</div>
+            </div>
+            <div class="entry-date">2013</div>
+          </div>
+          <div class="entry">
+            <div>
+              <div class="entry-title">Monitoring the European CDS market through networks: Implications for contagion risks</div>
+              <div class="entry-sub">Clerc, Gabrieli, Kern and El Omari, Banque de France Working Paper No. 477</div>
+            </div>
+            <div class="entry-date">2014</div>
+          </div>
+          <div class="entry">
+            <div>
+              <div class="entry-title">EU derivative markets – a first-time overview</div>
+              <div class="entry-sub">El Omari, Haferkorn and Nommels, ESMA Report on Trends, Risks and Vulnerabilities</div>
+            </div>
+            <div class="entry-date">2017</div>
+          </div>
+          <div class="entry">
+            <div>
+              <div class="entry-title">Interdependencies in central clearing in the EU derivatives markets</div>
+              <div class="entry-sub">ESRB Occasional Paper Series, forthcoming</div>
+            </div>
+            <div class="entry-date">Forthcoming</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="card">
+          <p>
+            The best way to reach me is by email at
+            <a href="mailto:yaniselomari@hotmail.fr">yaniselomari@hotmail.fr</a>.
+          </p>
+          <p>
+            You can also use this website to access my CV, research papers, and future presentation materials.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        © 2026 Yanis El Omari. Built for GitHub Pages.
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
