@@ -139,15 +139,13 @@
 
     .profile-photo {
       width: 100%;
-      aspect-ratio: 4 / 5;
+      height: auto;
+      display: block;
       border-radius: 14px;
-      background: linear-gradient(135deg, #e8edf4, #d9e7f3);
-      display: grid;
-      place-items: center;
-      color: var(--muted);
-      font-size: 0.95rem;
       margin-bottom: 1rem;
       border: 1px solid var(--line);
+      background: none;
+      object-fit: contain;
     }
 
     main section {
@@ -243,7 +241,7 @@
       }
 
       .profile-box {
-        position: static;
+        position: static;photo
       }
 
       .entry-date {
